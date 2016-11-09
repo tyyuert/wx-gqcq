@@ -9,7 +9,7 @@ $(function () {
 
 function onload(){
 //资源预加载
-    var basePath = (location.host + location.pathname.slice(0,-15));
+    var basePath = (location.host + location.pathname.slice(0,-10));
     // var basePath = "http://222.com/222/广汽传祺/pro1/wx-gqcq/";
     var loader = new WxMoment.Loader();
 
