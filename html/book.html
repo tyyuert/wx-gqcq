@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta charset="UTF-8">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="wxm:timeline_title" content="为征服而来，传祺GS8霸气来袭">
+    <meta name="wxm:appmessage_title" content="为征服而来，传祺GS8霸气来袭">
+    <meta name="wxm:appmessage_desc" content="抢先预定--为征服而来，传祺GS8霸气来袭">
+    <!-- 分享缩略图，必须为绝对路径-->
+    <meta name="wxm:img_url" content="http://wximg.qq.com/wxp/moment/NkIinIAq-/img/fx.jpg">
+    <!-- 分享链接-->
+    <meta name="wxm:link" content="https://wximg.qq.com/wxp/moment/NkIinIAq-/html/index.html">    <!-- 分享链接-->
+	<title>为征服而来，传祺GS8霸气来袭</title>
+    <link rel="stylesheet" href="../css/style-chuanqi.css"/>
+    <link rel="stylesheet" href="../css/commen.css"/>
+    <style>
+        html, body {
+            height: 100%;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            overflow: hidden;
+            background-color: #070709;
+        }
+        select{
+            padding: 0;
+            margin: 0;
+            -webkit-appearance:none;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            -ms-box-sizing: border-box;
+            -o-box-sizing: border-box;
+            box-sizing: border-box;
+            width: 48%;
+            margin: 4% 2% 4% 0;
+            float: left;
+            border: 2px solid #8e8e8e;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            -ms-border-radius: 2px;
+            -o-border-radius: 2px;
+            border-radius: 2px;
+            font-size: 14px;
+            font-family: "Microsoft YaHei";
+            padding: 15px;
+            background-color: #2b2b2b;
+            color:#CCC;
+        }
+    </style>
+</head>
+<body>
+<!--<script src="//wximg.qq.com/wxp/libs/wxmoment/0.0.4/wxmoment.min.js"></script>-->
+<script src="../js/weixinqq.js"></script>
+<script>new WxMoment.OrientationTip();var share = new WxMoment.Share({}),event;</script>
+    <div class="loading"></div>
+
+    <!--容器 begin-->
+    <div class="wrap main-wrap">
+        <header class="header">
+            <div class="logo"><img src="../img/logo.png" alt="logo"/></div>
+        </header>
+        <contain class="contain">
+            <div class="book main">
+                <div class="bigtitle">
+                    <img src="../img/book-01.png"/>
+                </div>
+                <p>前5000位预定豪华智联版的客户<br>将获赠由设计师签名原厂专属定制的越野踏板套件</p>
+                <form class="clearfix">
+                    <input type="text" id="name" placeholder="姓名"/>
+                    <input type="text" id="mobile" placeholder="手机号码"/>
+                    <select id="prov">
+                        <label>省份</label>
+                        <option value="">请选择省份</option>
+                        <option value="1">北京</option>
+                        <option value="2">天津</option>
+                        <option value="3">河北</option>
+                        <option value="4">山西</option>
+                        <option value="5">内蒙古</option>
+                        <option value="6">辽宁</option>
+                        <option value="7">吉林</option>
+                        <option value="8">黑龙江</option>
+                        <option value="9">上海</option>
+                        <option value="10">江苏</option>
+                        <option value="11">浙江</option>
+                        <option value="12">安徽</option>
+                        <option value="13">福建</option>
+                        <option value="14">江西</option>
+                        <option value="15">山东</option>
+                        <option value="16">河南</option>
+                        <option value="17">湖北</option>
+                        <option value="18">湖南</option>
+                        <option value="19">广东</option>
+                        <option value="20">广西</option>
+                        <option value="21">海南</option>
+                        <option value="22">重庆</option>
+                        <option value="23">四川</option>
+                        <option value="24">贵州</option>
+                        <option value="25">云南</option>
+                        <option value="26">西藏</option>
+                        <option value="27">陕西</option>
+                        <option value="28">甘肃</option>
+                        <option value="29">青海</option>
+                        <option value="30">宁夏</option>
+                        <option value="31">新疆</option>
+                    </select>
+                    <select id="city">
+                        <label>城市</label>
+                        <option value="">请选择城市</option>
+                        <option value=""></option>
+                    </select>
+                    <select id="sale1" >
+                        <label>经销商</label>
+                        <option value="">请选择经销商</option>
+                        <option value=""></option>
+                    </select>
+                    <button type="submit"> </button>
+                </form>
+            </div>
+        </contain>
+    </div>
+    <!--容器 end-->
+
+
+<script src="../js/dealer_data.js"></script>
+<script>
+    // 省市级联
+    var $prov   = $('#prov');
+    var $city   = $('#city');
+    var $sale1 = $('#sale1');
+
+    $prov.on('change', function(){
+        var proId = $(this).val();
+        var cityHtml = '<option value="">城市</option>';
+        if(proId != ''){
+            var cityList = DEALER_DATA[proId]['city'] || [];
+            $.each(cityList, function(id, item){
+                cityHtml += '<option value="'+id+'">'+item.name+'</option>';
+            });
+        }
+        $city.html(cityHtml).trigger('change');
+    });
+
+    $city.on('change', function(){
+        var proId  = $prov.val();
+        var cityId = $(this).val();
+        var dealerHtml = '<option value="">请选择经销商</option>';
+        if(cityId != '' && proId != ''){
+            var dealerList = DEALER_DATA[proId]['city'][cityId]['dealer'];
+            $.each(dealerList, function(id, item){
+                dealerHtml += '<option value="'+id+'">'+item.name+'</option>';
+            });
+        }
+        $sale1.html(dealerHtml);
+    });
+</script>
+<!-- build:js ../js/lib.js -->
+<script src="../js/main.js"></script>
+<!-- endbuild -->
+</body>
+</html>
